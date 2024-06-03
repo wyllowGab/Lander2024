@@ -96,7 +96,8 @@ public class Lander2024 {
 				break;
 			case 4:
 				System.out.println("\nPUNTUACIONES");
-				System.out.println("\n** No implementado");
+				//System.out.println("\n** No implementado");
+				MostrarPuntuacion();
 				break;
 			case 5:
 				System.out.println("\nCREDITOS");
@@ -181,7 +182,6 @@ public class Lander2024 {
 				else{
 					System.out.println("La opción no existe");
 				}
-
 			}
 			de._c.close();
 		} catch (SQLException e) {
@@ -191,7 +191,7 @@ public class Lander2024 {
     }
     
     public void runSim(Integer user,Lander l, Escenario e) {
-    	
+
     	Double altura = 0.0;
     	Simulacion sim = new Simulacion(user,l,e);
    	
@@ -205,6 +205,21 @@ public class Lander2024 {
     	while (altura>0 && !(sim.__break)) ;
     	sim.show_result(); 						// Resultado Final de la simulación
     }
+
+	public void MostrarPuntuacion(){
+		DAOPuntuaciones dp = new DAOPuntuaciones(MODO);
+		DAOPlayer dpp = new DAOPlayer(MODO);
+		ArrayList <Puntuacion> arrayPuntuaciones = dp.getPuntuaciones();
+		int posi = 0;
+		for(Puntuacion pt : arrayPuntuaciones){
+			if(posi < 10){
+				Player p = dpp.getPlayer(pt.getId_Usuario());
+				System.out.println("Usuario: "+p.getNombre()+", nivel de combustible: "+pt.getFuel());
+				posi++;
+
+			}
+		}
+	}
  /*   
     public void runStructured(){
         double dist=0;                     // Distancia a la superficie m

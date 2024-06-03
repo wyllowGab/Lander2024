@@ -18,10 +18,9 @@ public class DAOEscenario {
 
 	/**
 	 * Trae la lista de Landers registrados en la base de datos
-	 * @return Colección de objetos Lander registrados
+	 * @return Colecciï¿½n de objetos Lander registrados
 	 */
 	public ArrayList<Escenario>getEscenarios() {
-		
 		ArrayList<Escenario> ale = new ArrayList<Escenario>();
 		Integer id_escenario;
 		try {
